@@ -1,0 +1,44 @@
+{
+  "name": "meshpi",
+  "version": "1.0.0",
+  "description": "Mesh Pi is an open source software platform that configures your Raspberry Pi as a wireless access point and mesh point and supports the integration of third party applications such as chat rooms, file servers, etc.",
+  "author": {
+    "name": "Luandro",
+    "email": "luandro@gmail.com"
+  },
+  "license": "AGPL-3.0",
+  "scripts": {
+    "start": "node subnode"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luandro/meshpi.git"
+  },
+  "keywords": [
+    "wlan",
+    "mesh",
+    "lan",
+    "offline",
+    "offnets",
+    "raspberrypi",
+    "rpi",
+    "node.js",
+    "hostapd",
+    "dnsmasq"
+  ],
+  "bugs": {
+    "url": "https://github.com/luandro/meshpi/issues"
+  },
+  "homepage": "https://github.com/luandro/meshpi",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": ">=3.11 <4",
+    "pug": "^2.0.0-alpha3",
+    "socket.io": ">=0.9.7",
+    "stylus": "^0.54.2"
+  },
+  "engines": {
+    "node": "5.0.0",
+    "npm": "3.8.x"
+  }
+}
