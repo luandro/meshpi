@@ -4,7 +4,7 @@
 # Author: Luandro
 # Contributors: Sarah Grant, Mark Hansen, Matthias Strubel, Danja Vasiliev
 # took guidance from a script by Paul Miller : https://dl.dropboxusercontent.com/u/1663660/scripts/install-rtl8188cus.sh
-# Updated 15 August 2017
+# Updated 22 March 2018
 #
 # TO-DO
 # - allow a selection of radio drivers
@@ -64,6 +64,9 @@ echo "// Welcome to Mesh Pi!"
 echo "// ~~~~~~~~~~~~~~~~~~~~"
 echo ""
 
+# echo "Let's find out what is your meshin USB"
+# iw phy  | grep phy
+# echo -n " "
 read -p "This installation script will install the latest arm version of node.js with a chatroom, set up a wireless access point and captive portal, and provide the option of configuring a BATMAN-ADV mesh point. Make sure you have one (or two, if installing the additional mesh point) USB wifi radios connected to your Raspberry Pi before proceeding. Press any key to continue..."
 echo ""
 clear

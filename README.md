@@ -3,23 +3,35 @@ Mesh Pi
 
 Fork from [subnodes](https://github.com/chootka/subnodes).
 
-Goal is to get an automatic layer 2 mesh with a [Libre Mesh](https://libremesh.org) router.
+Goal is to get a layer 2 mesh with a [Libre Mesh](https://libremesh.org) router using a [Raspberry Pi](https://www.raspberrypi.org/) [v3](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/) or [Zero W](https://www.raspberrypi.org/products/raspberry-pi-zero-w/) the easiest way possible.
 
-![](https://david-dm.org/luandro/meshpi.svg)
+## Usage
 
-## About Subnodes
+For this to work it is assumed that you are running a Raspberry Pi 3 or Pi Zero W with an additional mesh compatible usb dongle such as [TP-LINK_TL-WN722N](https://wikidevi.com/wiki/TP-LINK_TL-WN722N) v1 or v1.2, not [v2](https://wikidevi.com/wiki/TP-LINK_TL-WN722N_v2). The access point will be set up utilizing the Pi's internal wireless radio.
 
-Subnodes is an open source project that turns your Linux device running the latest Raspbian (as of this writing, Stretch Lite) into an offline mesh node and wireless access point.
+Make sure you have the additional radio and an ethernet cable connecting the Pi to the internet. On the first boot it will take a little bit to get first steps ready for you. You can check what's hapenning using `ps -ef`. Once the Pi reboots, it's all ready. Let's get in:
 
-This project is an initiative focused on streamlining the process of setting up a Raspberry Pi as a wireless access point for distributing content, media, and shared digital experiences. The device becomes a web server, creating its own local area network, and does not connect with the internet. This is key for the sake of offering a space where people can communicate anonymously and freely, as well as maximizing the portability of the network (no dependibility on an internet connection means the device can be taken and remain active anywhere). 
+`ssh pi@meshpi` with the password `meshpi`
 
-The device can also be configured as a BATMAN Advanced mesh node, enabling it to join with other nearby BATMAN nodes into a greater mesh network, extending the access point range and making it possible to exchange information with each other. Support for meshpi has been provided by Eyebeam. This code is published under the [AGPLv3](http://www.gnu.org/licenses/agpl-3.0.html).
+There you'll find the folder `meshpi`. You'll need to set the configuration files. 
 
-How to Install
---------------
-Assuming you are starting with a fresh [Raspbian Stretch Lite](http://www.raspberrypi.org/downloads/) (Latest tested version: November 2017) install on your SD card, these are the steps for setting up meshpi on your Raspberry Pi. It is also assumed that you have two wireless USB adapters attached to your RPi. They both must be running the nl80211 driver. If you are running a Raspberry Pi 3 or Pi Zero W, you only need one additional radio for the mesh point. The access point will be set up utilizing the Pi's internal wireless radio.
+`vim meshpi.config`
 
-Also, if this is your first time connecting to your Raspberry Pi headlessly (i.e. via SSH), you must first enable SSH by placing an empty file with no filename extension simple called `ssh` in the root of your SD card.
+It's set for Libre Mesh settings, but the USB device `phy` address may vary.
+ 
+ Use `iw phy  | grep phy` to list your devices and `iw phy phyX info` to find the device with `mesh-point` capability
+ 
+ Check to other configurations and once you're ready run the install script:
+
+`sudo ./install.sh`
+
+The installation process takes about 15 minutes. After it has completed, you will have a running node.js web server, wireless access point, and BATMAN Advanced mesh node. Connecting to the network and navigating to a browser page will redirect you to http://www.subnodes.org, where a sample node.js chat client will be running. 
+
+From here, fork, build, share your ideas, and have fun!
+
+## Without the image
+
+If you don't want to use the image, you can go through the steps manually assuming you're using a fresh Raspbian Lite install.
 
 * set up your Raspberry Pi with a basic configuration
 
@@ -39,19 +51,23 @@ Also, if this is your first time connecting to your Raspberry Pi headlessly (i.e
 
 * configure your wireless access point and mesh network in meshpi.config in any text editor, or in the command line you can use nano
 
-        nano meshpi.config
+        vim meshpi.config
 
 * run the installation script
 
         cd meshpi
         sudo ./install.sh
 
-The installation process takes about 15 minutes. After it has completed, you will have a running node.js web server, wireless access point, and BATMAN Advanced mesh node. Connecting to the network and navigating to a browser page will redirect you to http://www.subnodes.org, where a sample node.js chat client will be running. 
+## About Subnodes
 
-From here, fork, build, share your ideas, and have fun!
+Subnodes is an open source project that turns your Linux device running the latest Raspbian (as of this writing, Stretch Lite) into an offline mesh node and wireless access point.
 
-references
-----------
+This project is an initiative focused on streamlining the process of setting up a Raspberry Pi as a wireless access point for distributing content, media, and shared digital experiences. The device becomes a web server, creating its own local area network, and does not connect with the internet. This is key for the sake of offering a space where people can communicate anonymously and freely, as well as maximizing the portability of the network (no dependibility on an internet connection means the device can be taken and remain active anywhere). 
+
+The device can also be configured as a BATMAN Advanced mesh node, enabling it to join with other nearby BATMAN nodes into a greater mesh network, extending the access point range and making it possible to exchange information with each other. Support for meshpi has been provided by Eyebeam. This code is published under the [AGPLv3](http://www.gnu.org/licenses/agpl-3.0.html).
+
+## References
+
 * [Subnodes website](http://www.subnodes.org/)
 * [Raspberry Pi](http://www.raspberrypi.org/)
 * [eyebeam](http://eyebeam.org/)
