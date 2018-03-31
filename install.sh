@@ -120,9 +120,9 @@ esac
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 # SOFTWARE INSTALL
 #
-# update the packages
-echo "Updating apt-get and installing iw package for network interface configuration and batctl to manage batman adv..."
-apt-get update && apt-get install -y iw batctl
+# update the packages (moved to PiBakery)
+# echo "Updating apt-get and installing iw package for network interface configuration and batctl to manage batman adv..."
+# apt-get update && apt-get install -y iw batctl
 echo ""
 echo "Loading the meshpi configuration file..."
 
@@ -143,11 +143,11 @@ fi
 # copy config file to /etc
 [ "$copy_ok" == "yes" ] && cp meshpi.config /etc
 
-# install node.js
-echo "Installing latest Node.js for arm..."
-wget http://node-arm.herokuapp.com/node_latest_armhf.deb
-dpkg -i node_latest_armhf.deb
-echo ""
+# install node.js (moved to PiBakery)
+# echo "Installing latest Node.js for arm..."
+# wget http://node-arm.herokuapp.com/node_latest_armhf.deb
+# dpkg -i node_latest_armhf.deb
+# echo ""
 
 # install chat room
 # echo "Installing chat room..."
@@ -186,11 +186,11 @@ clear
 echo "Configuring Access Point..."
 echo ""
 
-# install required packages
-echo ""
-echo -en "Installing bridge-utils, hostapd and dnsmasq..."
-apt-get install -y bridge-utils hostapd dnsmasq
-echo -en "[OK]\n"
+# install required packages (moved to PiBakery)
+# echo ""
+# echo -en "Installing bridge-utils, hostapd and dnsmasq..."
+# apt-get install -y bridge-utils hostapd dnsmasq
+# echo -en "[OK]\n"
 
 # backup the existing interfaces file
 echo -en "Creating backup of network interfaces configuration file..."
